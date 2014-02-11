@@ -6,6 +6,7 @@ describe BlackbookApi::Vehicle, ".from_blackbook_hash" do
 
     let(:vehicle) {described_class.from_blackbook_hash used_vehicles.fetch("used_vehicles").fetch("used_vehicle_list").fetch(0)}
 
+    it{ expect(vehicle.state).to eq("NT") }
     it{ expect(vehicle.make).to eq("Dodge") }
     it{ expect(vehicle.model).to eq("Grand Caravan") }
     it{ expect(vehicle.year).to eq(2012) }
