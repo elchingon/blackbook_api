@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://john%40blinker.com:blinker@service.blackbookcloud.com/UsedCarWS/UsedCarWS/UsedVehicle/VIN/4T1BK1EB6DU056165?fmt=json
+    uri: https://john%40exampl.com:exampl@service.blackbookcloud.com/UsedCarWS/UsedCarWS/UsedVehicle/VIN/4T1BK1EB6DU056165?fmt=json
     body:
       encoding: US-ASCII
       string: ''
