@@ -8,6 +8,7 @@ require "blackbook_api/version"
 require "blackbook_api/configure"
 
 require "blackbook_api/errors/blackbook_api_error"
+require "blackbook_api/errors/blackbook_api_error_handler"
 require "blackbook_api/errors/authentication_error"
 require "blackbook_api/errors/request_failure_handler"
 require "blackbook_api/errors/request_failed_error"

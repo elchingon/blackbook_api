@@ -12,9 +12,5 @@ module BlackbookApi
       @json_body = json_body
     end
 
-    def to_s
-      status_string = @http_status.nil? ? "" : "(Status #{@http_status}) "
-      "#{status_string}#{@message}"
-    end
   end
 end

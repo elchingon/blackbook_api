@@ -1,28 +1,29 @@
 require 'spec_helper'
 
 describe BlackbookApi::Client, "#decode_vin" do
-  context "with a successful response" do
     let(:valid_vin){ "4T1BK1EB6DU056165" }
 
+  context "with a successful response" do
     it "returns an BlackbookApi::Vehicle", :vcr do
       result = default_client.decode_vin valid_vin
-      expect(result).to be_an(BlackbookApi::Vehicle)
+      expect(result.count).to be > 0
+      expect(result.first).to be_an(BlackbookApi::Vehicle)
     end
   end
 
   context "with an unsuccessful response" do
     it "calls the default failure handler method with the raw response", :vcr do
-      expect(BlackbookApi::RequestFailureHandler).to receive(:call)
+
+      expect(BlackbookApi::BlackbookApiErrorHandler).to receive(:call)
 
       default_client.decode_vin "invalid_vin"
     end
 
-    it "calls the provided failure handler method with the raw response", :vcr do
-      failure_handler = double("failure_handler")
-
-      expect(failure_handler).to receive(:call)
-
-      default_client.decode_vin "invalid_vin", failure_handler
+    it "returns AuthenticationError if no username is passed", :vcr do
+      BlackbookApi.username = nil
+      expect do
+        default_client.decode_vin valid_vin
+      end.to raise_error BlackbookApi::AuthenticationError
     end
   end
 end
