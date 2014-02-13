@@ -15,6 +15,7 @@ require "blackbook_api/errors/request_failed_error"
 
 require "blackbook_api/client"
 require "blackbook_api/vehicle"
+require "blackbook_api/vehicle_make"
 
 module BlackbookApi
   extend Configure
