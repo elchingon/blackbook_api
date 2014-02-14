@@ -17,8 +17,11 @@ Or install it yourself as:
     $ gem install blackbook_api
 
 ## Usage
+To Install 
 
-TODO: Write usage instructions here
+    $ rails g blackbook_api:install 
+
+Add Blackbook username and password to this file
 
 ## Contributing
 
