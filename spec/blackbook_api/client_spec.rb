@@ -1,11 +1,19 @@
 require 'spec_helper'
 
 describe BlackbookApi::Client, "#decode_vin" do
-    let(:valid_vin){ "4T1BK1EB6DU056165" }
+  let(:valid_vin){ "4T1BK1EB6DU056165" }
 
   context "with a successful response" do
     it "returns an BlackbookApi::Vehicle", :vcr do
       result = default_client.decode_vin valid_vin
+      expect(result[:vehicles].count).to be > 0
+      expect(result[:vehicles].first).to be_an(BlackbookApi::Vehicle)
+      expect(result[:status]).to eq('Success')
+    end
+
+    it "returns an BlackbookApi::Vehicle with long vin", :vcr do
+      long_vin = "1ZVFT84N365245356J"
+      result = default_client.decode_vin long_vin
       expect(result[:vehicles].count).to be > 0
       expect(result[:vehicles].first).to be_an(BlackbookApi::Vehicle)
       expect(result[:status]).to eq('Success')

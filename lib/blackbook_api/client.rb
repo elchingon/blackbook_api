@@ -74,7 +74,7 @@ module BlackbookApi
     private
 
     def parse_vin vin
-      vin[0,8] + vin[10] if vin.length < 10
+      vin[0,8] + vin[9] if vin.length >= 10
     end
 
     def handle_vehicle_list_response vehicle_list

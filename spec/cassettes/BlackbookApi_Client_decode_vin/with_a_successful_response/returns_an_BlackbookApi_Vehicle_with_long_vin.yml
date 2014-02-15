@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://john%40example.com:example@service.blackbookcloud.com/UsedCarWS/UsedCarWS/UsedVehicle/VIN/1ZVFT84N6?fmt=json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '4416'
+      Content-Type:
+      - text/javascript; charset=utf-8
+      Expires:
+      - '-1'
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Sat, 15 Feb 2014 04:09:03 GMT
+    body:
+      encoding: UTF-8
+      string: '{"warning_count":0,"error_count":0,"message_list":[],"token_expiration_minutes":0,"used_vehicles":{"used_vehicle_list":[{"publish_date":"2/14/2014","data_freq":"D","state":"NT","country":"US","vin":"1ZVFT84N6","uvc":"2006300325","groupnum":"0077","model_year":"2006","make":"Ford","model":"Mustang","series":"Base","style":"2D
+        Convertible","mileage_cat":"B","class_code":"I","class_name":"Sporty Car","first_values_flag":false,"risk_score":"","base_retail_xclean":0,"mileage_retail_xclean":0,"add_deduct_retail_xclean":0,"regional_retail_xclean":0,"adjusted_retail_xclean":0,"base_retail_clean":11800,"mileage_retail_clean":0,"add_deduct_retail_clean":0,"regional_retail_clean":0,"adjusted_retail_clean":11800,"base_retail_avg":9975,"mileage_retail_avg":0,"add_deduct_retail_avg":0,"regional_retail_avg":0,"adjusted_retail_avg":9975,"base_retail_rough":7650,"mileage_retail_rough":0,"add_deduct_retail_rough":0,"regional_retail_rough":0,"adjusted_retail_rough":7650,"base_tradein_clean":9345,"mileage_tradein_clean":0,"add_deduct_tradein_clean":0,"regional_tradein_clean":0,"adjusted_tradein_clean":9345,"base_tradein_avg":7895,"mileage_tradein_avg":0,"add_deduct_tradein_avg":0,"regional_tradein_avg":0,"adjusted_tradein_avg":7895,"base_tradein_rough":5650,"mileage_tradein_rough":0,"add_deduct_tradein_rough":0,"regional_tradein_rough":0,"adjusted_tradein_rough":5650,"region2":0,"region3":0,"region4":0,"region5":0,"region6":0,"msrp":23940,"retail_equipped":28200,"price_includes":"AT
+        AC EW","wheel_base":107.0,"tire_size":"215/65R16","gvw":3351.0,"payload_cap":"1,000","tow_cap":"","seat_cap":"4","seats":"","fuel_type":"Gas","fuel_cap":"16.0","fuel_delivery":"SFI","hwy_mpg":"28","city_mpg":"19","engine_description":"4.0L
+        V6 EFI ","cylinders":"6","engine_displacement":"4.0L","base_hp":"210 @ 5300","taxable_hp":37.0,"torque":"240
+        @ 3500","transmission":"A","drivetrain":"RWD","num_gears":"5","ext_doors":"","airbags":"","anti_corrosion_warranty":"","basic_warranty":"","bumper_to_bumper_warranty":"3-year/36,000-mile","add_deduct_list":[{"uoc":"20","name":"Leather","xclean":300,"clean":300,"avg":300,"rough":300,"auto":"N","resid12":0,"resid24":0,"resid30":0,"resid36":0,"resid42":0,"resid48":0,"resid60":0,"resid72":0},{"uoc":"05","name":"w/o
+        Auto Trans","xclean":-450,"clean":-450,"avg":-450,"rough":-450,"auto":"N","resid12":0,"resid24":0,"resid30":0,"resid36":0,"resid42":0,"resid48":0,"resid60":0,"resid72":0}],"mileage_list":[{"model_year":"2006","range_begin":1,"range_end":40000,"clean":975,"avg":1175,"rough":0,"finadv":950,"mileage_cat":"B"},{"model_year":"2006","range_begin":40001,"range_end":50000,"clean":775,"avg":975,"rough":0,"finadv":775,"mileage_cat":"B"},{"model_year":"2006","range_begin":50001,"range_end":60000,"clean":600,"avg":775,"rough":0,"finadv":600,"mileage_cat":"B"},{"model_year":"2006","range_begin":60001,"range_end":70000,"clean":450,"avg":600,"rough":0,"finadv":450,"mileage_cat":"B"},{"model_year":"2006","range_begin":70001,"range_end":80000,"clean":325,"avg":450,"rough":0,"finadv":325,"mileage_cat":"B"},{"model_year":"2006","range_begin":80001,"range_end":90000,"clean":200,"avg":325,"rough":0,"finadv":200,"mileage_cat":"B"},{"model_year":"2006","range_begin":90001,"range_end":100000,"clean":0,"avg":200,"rough":0,"finadv":0,"mileage_cat":"B"},{"model_year":"2006","range_begin":100001,"range_end":115000,"clean":-525,"avg":0,"rough":0,"finadv":-475,"mileage_cat":"B"},{"model_year":"2006","range_begin":115001,"range_end":130000,"clean":-1100,"avg":-475,"rough":0,"finadv":-975,"mileage_cat":"B"},{"model_year":"2006","range_begin":130001,"range_end":145000,"clean":-2050,"avg":-1425,"rough":-825,"finadv":-1825,"mileage_cat":"B"},{"model_year":"2006","range_begin":145001,"range_end":160000,"clean":-3125,"avg":-2500,"rough":-1850,"finadv":-2775,"mileage_cat":"B"},{"model_year":"2006","range_begin":160001,"range_end":175000,"clean":-4175,"avg":-3550,"rough":-2925,"finadv":-3700,"mileage_cat":"B"},{"model_year":"2006","range_begin":175001,"range_end":190000,"avg":-4450,"rough":-3825,"finadv":-4350,"mileage_cat":"B"},{"model_year":"2006","range_begin":190001,"range_end":210000,"avg":-5375,"rough":-4750,"finadv":-5125,"mileage_cat":"B"},{"model_year":"2006","range_begin":210001,"range_end":999999,"avg":-6225,"rough":-5600,"finadv":-6200,"mileage_cat":"B"}],"model_number_list":["T84"]}],"template":1,"version":1,"data_included":true,"data_available":true}}'
+    http_version: 
+  recorded_at: Sat, 15 Feb 2014 04:09:07 GMT
+recorded_with: VCR 2.8.0
