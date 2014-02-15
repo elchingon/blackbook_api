@@ -18,6 +18,8 @@ describe BlackbookApi::Vehicle, ".from_blackbook_hash" do
     it{ expect(vehicle.mpg_highway).to eq(25) }
     it{ expect(vehicle.engine_cylinders).to eq(6) }
     it{ expect(vehicle.engine_fuel_type).to eq("Flex") }
+    it{ expect(vehicle.price_base_retail_xclean).to eq(18450) }
+    it{ expect(vehicle.price_adjusted_retail_clean).to eq(18450) }
 
   end
 
@@ -57,16 +59,16 @@ describe BlackbookApi::Vehicle, ".from_blackbook_hash" do
             "class_name" => "Passenger Van",
             "first_values_flag" => false,
             "risk_score" => "",
-            "base_whole_xclean" => 0,
+            "base_whole_xclean" => 20000,
             "mileage_whole_xclean" => 0,
             "add_deduct_whole_xclean" => 0,
             "regional_whole_xclean" => 0,
-            "adjusted_whole_xclean" => 0,
-            "base_whole_clean" => 0,
-            "mileage_whole_clean" => 0,
+            "adjusted_whole_xclean" => 20000,
+            "base_whole_clean" => 19000,
+            "mileage_whole_clean" => -1000,
             "add_deduct_whole_clean" => 0,
             "regional_whole_clean" => 0,
-            "adjusted_whole_clean" => 0,
+            "adjusted_whole_clean" => 18000,
             "base_whole_avg" => 0,
             "mileage_whole_avg" => 0,
             "add_deduct_whole_avg" => 0,

@@ -6,17 +6,19 @@ describe BlackbookApi::Client, "#decode_vin" do
   context "with a successful response" do
     it "returns an BlackbookApi::Vehicle", :vcr do
       result = default_client.decode_vin valid_vin
-      expect(result.count).to be > 0
-      expect(result.first).to be_an(BlackbookApi::Vehicle)
+      expect(result[:vehicles].count).to be > 0
+      expect(result[:vehicles].first).to be_an(BlackbookApi::Vehicle)
+      expect(result[:status]).to eq('Success')
     end
   end
 
   context "with an unsuccessful response" do
-    it "calls the default failure handler method with the raw response", :vcr do
+    it "returns error message when vin not found", :vcr do
 
-      expect(BlackbookApi::BlackbookApiErrorHandler).to receive(:call)
-
-      default_client.decode_vin "invalid_vin"
+      result =default_client.decode_vin "invalid_vin"
+      expect(result[:vehicles].count).to eq(0)
+      expect(result[:status]).to eq('Error')
+      expect(result[:message]).to include('Error')
     end
 
     it "returns AuthenticationError if no username is passed", :vcr do

@@ -6,9 +6,9 @@ module BlackbookApi
 
     def decode_vin(vin, failure_handler = RequestFailureHandler)
       vehicles = []
+      message, status, error = '', '', false
 
       response = self.class.get "/UsedCarWS/UsedCarWS/UsedVehicle/VIN/#{vin}", :headers => { "Authorization" =>  "Basic " + auth_credentials }
-       #query: { :username => BlackbookApi.username, :password => BlackbookApi.password }
       parsed_response = JSON.parse(response)
 
       handle_failure response, failure_handler do
@@ -18,18 +18,20 @@ module BlackbookApi
           used_vehicles.fetch("used_vehicle_list").each do |data|
             vehicles << Vehicle.from_blackbook_hash(data)
           end
+          status = "Success"
           # TODO - handle warning_count
         elsif parsed_response['error_count'] > 0
           parsed_response['message_list'].each do |msg|
-            if msg['type'] == "Error"
-              BlackbookApiErrorHandler.call(msg['description'], response.code, response, parsed_response)
-            end
+            message << msg['type'] + " - " + msg['description']
+            error = true if msg["type"] == "Error"
           end
+
+          status = "Error" if error
         end
 
       end
 
-      vehicles
+      { vehicles: vehicles, message: message, status: status }
     end
 
     def make_list_by_year(year, failure_handler = RequestFailureHandler)
