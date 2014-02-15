@@ -6,63 +6,107 @@ module BlackbookApi
 
     def decode_vin(vin, failure_handler = RequestFailureHandler)
       vehicles = []
-      message, status, error = '', '', false
+      message, status = '', ''
 
-      response = self.class.get "/UsedCarWS/UsedCarWS/UsedVehicle/VIN/#{vin}", :headers => { "Authorization" =>  "Basic " + auth_credentials }
-      parsed_response = JSON.parse(response)
+      vin = parse_vin vin #Only need first eight and 10th digit
 
-      handle_failure response, failure_handler do
-        used_vehicles = parsed_response["used_vehicles"]
+      if vin
+        response = self.class.get "/UsedCarWS/UsedCarWS/UsedVehicle/VIN/#{vin}", :headers => { "Authorization" =>  "Basic " + auth_credentials }
+        parsed_response = JSON.parse(response)
 
-        if used_vehicles.fetch("data_available") == true
-          used_vehicles.fetch("used_vehicle_list").each do |data|
-            vehicles << Vehicle.from_blackbook_hash(data)
+        handle_failure response, failure_handler do
+          used_vehicles = parsed_response["used_vehicles"]
+
+          if used_vehicles.fetch("data_available") == true
+
+            vehicles, message, status = handle_vehicle_list_response used_vehicles.fetch("used_vehicle_list")
+
+            # TODO - handle warning_count
+          elsif parsed_response['error_count'] > 0
+
+            message, status = handle_message_list_response parsed_response['message_list']
+
           end
-          status = "Success"
-          # TODO - handle warning_count
-        elsif parsed_response['error_count'] > 0
-          parsed_response['message_list'].each do |msg|
-            message << msg['type'] + " - " + msg['description']
-            error = true if msg["type"] == "Error"
-          end
-
-          status = "Error" if error
         end
-
+      else
+        message, status = "Error - Vin too short. Vin must be at least 10 digits.", "Error"
       end
 
-      { vehicles: vehicles, message: message, status: status }
+      vehicles_response_hash vehicles, message, status
     end
 
     def make_list_by_year(year, failure_handler = RequestFailureHandler)
       makes = []
+      message, status = '', ''
+
       response = self.class.get "/UsedCarWS/UsedCarWS/Drilldown/ALL/#{year}", :headers => { "Authorization" =>  "Basic " + auth_credentials }
 
       parsed_response = JSON.parse(response)
       drilldown = parsed_response["drilldown"]
+
       handle_failure response, failure_handler do
-        make_list = drilldown["class_list"][0]["year_list"][0]["make_list"]
 
         if drilldown.fetch("data_available") == true
-      binding.pry
-          make_list.each do |make|
-            makes << VehicleMake.from_blackbook_hash(make)
-          end
+
+          make_list = drilldown["class_list"][0]["year_list"][0]["make_list"]
+          makes, message, status = handle_make_list_response make_list
+
           # TODO - handle warning_count
         elsif parsed_response['error_count'] > 0
-          parsed_response['message_list'].each do |msg|
-            if msg['type'] == "Error"
-              BlackbookApiErrorHandler.call(msg['description'], response.code, response, parsed_response)
-            end
-          end
-        end
 
+          message, status = handle_message_list_response parsed_response['message_list']
+
+        end
       end
 
-      makes
+      makes_response_hash makes, message, status
     end
 
+    def vehicles_response_hash vehicles, message, status
+      { vehicles: vehicles, message: message, status: status }
+    end
+
+    def makes_response_hash makes, message, status
+      { makes: makes, message: message, status: status }
+    end
+
+
     private
+
+    def parse_vin vin
+      vin[0,8] + vin[10] if vin.length < 10
+    end
+
+    def handle_vehicle_list_response vehicle_list
+      vehicles = []
+
+      vehicle_list.each do |data|
+        vehicles << Vehicle.from_blackbook_hash(data)
+      end
+
+      [ vehicles, "#{vehicles.count} vehicles found.", "Success" ]
+    end
+
+    def handle_make_list_response make_list
+      makes = []
+
+      make_list.each do |make|
+        makes << VehicleMake.from_blackbook_hash(make)
+      end
+
+      [ makes, "#{makes.count} makes found.", "Success" ]
+    end
+
+    def handle_message_list_response message_list
+      message, status, error = "", "Success", false
+      message_list.each do |msg|
+        message << msg['type'] + " - " + msg['description']
+        error = true if msg["type"] == "Error"
+      end
+
+      status = "Error" if error
+      [ message, status ]
+    end
 
     def handle_failure response, failure_handler, &block
       if response.code == 200

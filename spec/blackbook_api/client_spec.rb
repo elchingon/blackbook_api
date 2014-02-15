@@ -15,13 +15,23 @@ describe BlackbookApi::Client, "#decode_vin" do
   context "with an unsuccessful response" do
     it "returns error message when vin not found", :vcr do
 
-      result =default_client.decode_vin "invalid_vin"
+      result = default_client.decode_vin "invalid_vin"
       expect(result[:vehicles].count).to eq(0)
       expect(result[:status]).to eq('Error')
       expect(result[:message]).to include('Error')
+
     end
 
-    it "returns AuthenticationError if no username is passed", :vcr do
+    it "returns error message when vin too short", :vcr do
+
+      result = default_client.decode_vin "invalid_vin"
+      expect(result[:vehicles].count).to eq(0)
+      expect(result[:status]).to eq('Error')
+      expect(result[:message]).to include('Vin too short')
+
+    end
+
+    it "returns AuthenticationError if no username is passed" do
       BlackbookApi.username = nil
       expect do
         default_client.decode_vin valid_vin
@@ -36,20 +46,23 @@ describe BlackbookApi::Client, "#make_list_by_year" do
   context "with a successful response" do
     it "returns an BlackbookApi::VehicleMake", :vcr do
       result = default_client.make_list_by_year valid_year
-      expect(result.count).to be > 0
-      expect(result.first).to be_an(BlackbookApi::VehicleMake)
+      expect(result[:makes].count).to be > 0
+      expect(result[:makes].first).to be_an(BlackbookApi::VehicleMake)
+      expect(result[:status]).to eq('Success')
     end
   end
 
   context "with an unsuccessful response" do
-    it "calls the default failure handler method with the raw response", :vcr do
+    it "returns error message when invalid year passed", :vcr do
 
-      expect(BlackbookApi::BlackbookApiErrorHandler).to receive(:call)
+      result = default_client.make_list_by_year "invalid_year"
 
-      default_client.make_list_by_year "invalid_year"
+      expect(result[:makes].count).to eq(0)
+      expect(result[:status]).to eq('Error')
+      expect(result[:message]).to include('Error')
     end
 
-    it "returns AuthenticationError if no username is passed", :vcr do
+    it "returns AuthenticationError if no username is passed" do
       BlackbookApi.username = nil
       expect do
         default_client.make_list_by_year valid_year
