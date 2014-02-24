@@ -83,6 +83,14 @@ module BlackbookApi
     attribute :price_add_deduct_tradein_rough, Float
     attribute :price_regional_tradein_rough, Float
     attribute :price_adjusted_tradein_rough, BigDecimal
+    attribute :region2, Float
+    attribute :region3, Float
+    attribute :region4, Float
+    attribute :region5, Float
+    attribute :region6, Float
+    attribute :msrp, BigDecimal
+    attribute :retail_equiped, BigDecimal
+    attribute :price_includes, String
 
 
     def self.from_blackbook_hash data={}
@@ -170,6 +178,14 @@ module BlackbookApi
         vehicle.price_add_deduct_tradein_rough = data["add_deduct_tradein_rough"]
         vehicle.price_regional_tradein_rough = data["regional_tradein_rough"]
         vehicle.price_adjusted_tradein_rough = data["adjusted_tradein_rough"]
+
+        vehicle.region2 = data["region2"]
+        vehicle.region3 = data["region3"]
+        vehicle.region4 = data["region4"]
+        vehicle.region5 = data["region5"]
+        vehicle.msrp = data["msrp"]
+        vehicle.retail_equiped = data["retail_equiped"]
+        vehicle.price_includes = data["price_includes"]
       end
     end
   end

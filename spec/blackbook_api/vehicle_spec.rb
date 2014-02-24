@@ -21,6 +21,10 @@ describe BlackbookApi::Vehicle, ".from_blackbook_hash" do
     it{ expect(vehicle.price_base_retail_xclean).to eq(18450) }
     it{ expect(vehicle.price_adjusted_retail_clean).to eq(18450) }
 
+    it{ expect(vehicle.region2).to eq(-100) }
+    it{ expect(vehicle.msrp).to eq(20995) }
+    it{ expect(vehicle.retail_equipped).to eq(22925) }
+    it{ expect(vehicle.price_includes).to eq("AT AC 6CY") }
   end
 
   context "missing engine data" do
