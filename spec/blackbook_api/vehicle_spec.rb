@@ -31,6 +31,12 @@ describe BlackbookApi::Vehicle, ".from_blackbook_hash" do
      expect(vehicle.add_deduct_list.first).to be_a(BlackbookApi::AddDeductItem)
      expect(vehicle.add_deduct_list.count).to eq(4)
     end
+
+    it "should return a Set of mileage items" do
+     expect(vehicle.mileage_list).to be_a(Set)
+     expect(vehicle.mileage_list.first).to be_a(BlackbookApi::MileageItem)
+     expect(vehicle.mileage_list.count).to eq(15)
+    end
   end
 
   context "missing engine data" do

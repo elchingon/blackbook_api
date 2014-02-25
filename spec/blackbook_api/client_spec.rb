@@ -49,7 +49,7 @@ describe BlackbookApi::Client, "#decode_vin" do
 end
 
 describe BlackbookApi::Client, "#make_list_by_year" do
-    let(:valid_year){ "2012" }
+  let(:valid_year){ "2012" }
 
   context "with a successful response" do
     it "returns an BlackbookApi::VehicleMake", :vcr do

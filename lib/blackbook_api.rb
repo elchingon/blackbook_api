@@ -15,6 +15,7 @@ require "blackbook_api/errors/request_failed_error"
 
 require "blackbook_api/client"
 require "blackbook_api/add_deduct_item"
+require "blackbook_api/mileage_item"
 require "blackbook_api/vehicle_make"
 require "blackbook_api/vehicle"
 

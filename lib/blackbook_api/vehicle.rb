@@ -93,6 +93,7 @@ module BlackbookApi
     attribute :price_includes, String
 
     attribute :add_deduct_list, Set[AddDeductItem]
+    attribute :mileage_list, Set[MileageItem]
 
     def self.from_blackbook_hash data={}
       new.tap do |vehicle|
@@ -189,6 +190,7 @@ module BlackbookApi
         vehicle.price_includes = data["price_includes"]
 
         vehicle.add_deduct_list = data["add_deduct_list"]
+        vehicle.mileage_list = data["mileage_list"]
       end
     end
   end
