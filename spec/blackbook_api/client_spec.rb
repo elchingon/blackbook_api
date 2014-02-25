@@ -35,7 +35,7 @@ describe BlackbookApi::Client, "#decode_vin" do
       result = default_client.decode_vin "invalid_vin"
       expect(result[:vehicles].count).to eq(0)
       expect(result[:status]).to eq('Error')
-      expect(result[:message]).to include('Vin too short')
+      expect(result[:message]).to include('Vehicle Not Found')
 
     end
 

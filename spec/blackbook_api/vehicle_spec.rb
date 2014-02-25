@@ -18,13 +18,19 @@ describe BlackbookApi::Vehicle, ".from_blackbook_hash" do
     it{ expect(vehicle.mpg_highway).to eq(25) }
     it{ expect(vehicle.engine_cylinders).to eq(6) }
     it{ expect(vehicle.engine_fuel_type).to eq("Flex") }
-    it{ expect(vehicle.price_base_retail_xclean).to eq(18450) }
+    it{ expect(vehicle.price_base_retail_xclean).to eq(20075) }
     it{ expect(vehicle.price_adjusted_retail_clean).to eq(18450) }
 
     it{ expect(vehicle.region2).to eq(-100) }
     it{ expect(vehicle.msrp).to eq(20995) }
     it{ expect(vehicle.retail_equipped).to eq(22925) }
     it{ expect(vehicle.price_includes).to eq("AT AC 6CY") }
+
+    it "should return a Set of add_deduct items" do
+     expect(vehicle.add_deduct_list).to be_a(Set)
+     expect(vehicle.add_deduct_list.first).to be_a(BlackbookApi::AddDeductItem)
+     expect(vehicle.add_deduct_list.count).to eq(4)
+    end
   end
 
   context "missing engine data" do

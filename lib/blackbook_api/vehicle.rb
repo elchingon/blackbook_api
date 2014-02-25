@@ -89,9 +89,10 @@ module BlackbookApi
     attribute :region5, Float
     attribute :region6, Float
     attribute :msrp, BigDecimal
-    attribute :retail_equiped, BigDecimal
+    attribute :retail_equipped, BigDecimal
     attribute :price_includes, String
 
+    attribute :add_deduct_list, Set[AddDeductItem]
 
     def self.from_blackbook_hash data={}
       new.tap do |vehicle|
@@ -184,8 +185,10 @@ module BlackbookApi
         vehicle.region4 = data["region4"]
         vehicle.region5 = data["region5"]
         vehicle.msrp = data["msrp"]
-        vehicle.retail_equiped = data["retail_equiped"]
+        vehicle.retail_equipped = data["retail_equipped"]
         vehicle.price_includes = data["price_includes"]
+
+        vehicle.add_deduct_list = data["add_deduct_list"]
       end
     end
   end
