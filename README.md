@@ -21,7 +21,11 @@ To Install
 
     $ rails g blackbook_api:install 
 
-Add Blackbook username and password to this file
+Set ENV variables for Blackbook username and password so specs will run
+   
+    ENV['BLACKBOOK_USERNAME']
+    ENV['BLACKBOOK_PASSWORD']
+
 
 ## Contributing
 

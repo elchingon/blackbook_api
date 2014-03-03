@@ -4,14 +4,14 @@ describe BlackbookApi::Client, "#decode_vin" do
   let(:valid_vin){ "4T1BK1EB6DU056165" }
 
   context "with a successful response" do
-    it "returns an BlackbookApi::Vehicle", :vcr do
+    it "returns a BlackbookApi::Vehicle", :vcr do
       result = default_client.decode_vin valid_vin
       expect(result[:vehicles].count).to be > 0
       expect(result[:vehicles].first).to be_an(BlackbookApi::Vehicle)
       expect(result[:status]).to eq('Success')
     end
 
-    it "returns an BlackbookApi::Vehicle with long vin", :vcr do
+    it "returns a BlackbookApi::Vehicle with long vin", :vcr do
       long_vin = "1ZVFT84N365245356J"
       result = default_client.decode_vin long_vin
       expect(result[:vehicles].count).to be > 0
@@ -43,6 +43,47 @@ describe BlackbookApi::Client, "#decode_vin" do
       BlackbookApi.username = nil
       expect do
         default_client.decode_vin valid_vin
+      end.to raise_error BlackbookApi::AuthenticationError
+    end
+  end
+end
+
+describe BlackbookApi::Client, "#decode_uvc" do
+  let(:valid_uvc){ "2012360120" }
+
+  context "with a successful response" do
+    it "returns a single BlackbookApi::Vehicle", :vcr do
+      result = default_client.decode_uvc valid_uvc
+      expect(result[:vehicles].count).to eq(1)
+      expect(result[:vehicles].first).to be_an(BlackbookApi::Vehicle)
+      expect(result[:status]).to eq('Success')
+    end
+
+  end
+
+  context "with an unsuccessful response" do
+    it "returns error message when uvc not found", :vcr do
+
+      result = default_client.decode_uvc "invalid_uvc"
+      expect(result[:vehicles].count).to eq(0)
+      expect(result[:status]).to eq('Error')
+      expect(result[:message]).to include('Error')
+
+    end
+
+    it "returns error message when uvc too short", :vcr do
+
+      result = default_client.decode_uvc "invalid_uvc"
+      expect(result[:vehicles].count).to eq(0)
+      expect(result[:status]).to eq('Error')
+      expect(result[:message]).to include('UVC length must be 10 when no VIN is supplied')
+
+    end
+
+    it "returns AuthenticationError if no username is passed" do
+      BlackbookApi.username = nil
+      expect do
+        default_client.decode_uvc valid_uvc
       end.to raise_error BlackbookApi::AuthenticationError
     end
   end

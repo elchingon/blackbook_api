@@ -1,4 +1,4 @@
 BlackbookApi.configure do |config|
-  config.username = "john@blinker.com"
-  config.password = "blinker"
+  config.username = ENV['BLACKBOOK_USERNAME']
+  config.password =  ENV['BLACKBOOK_PASSWORD']
 end
