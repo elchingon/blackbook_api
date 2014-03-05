@@ -23,26 +23,21 @@ module BlackbookApi
     attribute :transmission, String # A = automatic, M = manual, can be null
     attribute :drivetrain, String
     attribute :num_gears, Integer
-    attribute :price_base_whole_xclean, BigDecimal
-    attribute :price_mileage_whole_xclean, Float
-    attribute :price_add_deduct_whole_xclean, Float
-    attribute :price_regional_whole_xclean, Float
-    attribute :price_adjusted_whole_xclean, BigDecimal
-    attribute :price_base_whole_clean, BigDecimal
-    attribute :price_mileage_whole_clean, Float
-    attribute :price_add_deduct_whole_clean, Float
-    attribute :price_regional_whole_clean, Float
-    attribute :price_adjusted_whole_clean, BigDecimal
-    attribute :price_base_whole_avg, BigDecimal
-    attribute :price_mileage_whole_avg, Float
-    attribute :price_add_deduct_whole_avg, Float
-    attribute :price_regional_whole_avg, Float
-    attribute :price_adjusted_whole_avg, BigDecimal
-    attribute :price_base_whole_rough, BigDecimal
-    attribute :price_mileage_whole_rough, Float
-    attribute :price_add_deduct_whole_rough, Float
-    attribute :price_regional_whole_rough, Float
-    attribute :price_adjusted_whole_rough, BigDecimal
+    attribute :price_base_private_clean, BigDecimal
+    attribute :price_mileage_private_clean, Float
+    attribute :price_add_deduct_private_clean, Float
+    attribute :price_regional_private_clean, Float
+    attribute :price_adjusted_private_clean, BigDecimal
+    attribute :price_base_private_avg, BigDecimal
+    attribute :price_mileage_private_avg, Float
+    attribute :price_add_deduct_private_avg, Float
+    attribute :price_regional_private_avg, Float
+    attribute :price_adjusted_private_avg, BigDecimal
+    attribute :price_base_private_rough, BigDecimal
+    attribute :price_mileage_private_rough, Float
+    attribute :price_add_deduct_private_rough, Float
+    attribute :price_regional_private_rough, Float
+    attribute :price_adjusted_private_rough, BigDecimal
     attribute :price_base_retail_xclean, BigDecimal
     attribute :price_mileage_retail_xclean, Float
     attribute :price_add_deduct_retail_xclean, Float
@@ -63,11 +58,6 @@ module BlackbookApi
     attribute :price_add_deduct_retail_rough, Float
     attribute :price_regional_retail_rough, Float
     attribute :price_adjusted_retail_rough, BigDecimal
-    attribute :price_base_tradein_xclean, BigDecimal
-    attribute :price_mileage_tradein_xclean, Float
-    attribute :price_add_deduct_tradein_xclean, Float
-    attribute :price_regional_tradein_xclean, Float
-    attribute :price_adjusted_tradein_xclean, BigDecimal
     attribute :price_base_tradein_clean, BigDecimal
     attribute :price_mileage_tradein_clean, Float
     attribute :price_add_deduct_tradein_clean, Float
@@ -118,26 +108,21 @@ module BlackbookApi
         vehicle.transmission = data["transmission"]
         vehicle.drivetrain = data["drivetrain"]
         vehicle.num_gears = data["num_gears"]
-        vehicle.price_base_whole_xclean = data["base_whole_xclean"]
-        vehicle.price_mileage_whole_xclean = data["mileage_whole_xclean"]
-        vehicle.price_add_deduct_whole_xclean = data["add_deduct_whole_xclean"]
-        vehicle.price_regional_whole_xclean = data["regional_whole_xclean"]
-        vehicle.price_adjusted_whole_xclean = data["adjusted_whole_xclean"]
-        vehicle.price_base_whole_clean = data["base_whole_clean"]
-        vehicle.price_mileage_whole_clean = data["mileage_whole_clean"]
-        vehicle.price_add_deduct_whole_clean = data["add_deduct_whole_clean"]
-        vehicle.price_regional_whole_clean = data["regional_whole_clean"]
-        vehicle.price_adjusted_whole_clean = data["adjusted_whole_clean"]
-        vehicle.price_base_whole_avg = data["base_whole_avg"]
-        vehicle.price_mileage_whole_avg = data["mileage_whole_avg"]
-        vehicle.price_add_deduct_whole_avg = data["add_deduct_whole_avg"]
-        vehicle.price_regional_whole_avg = data["regional_whole_avg"]
-        vehicle.price_adjusted_whole_avg = data["adjusted_whole_avg"]
-        vehicle.price_base_whole_rough = data["base_whole_rough"]
-        vehicle.price_mileage_whole_rough = data["mileage_whole_rough"]
-        vehicle.price_add_deduct_whole_rough = data["add_deduct_whole_rough"]
-        vehicle.price_regional_whole_rough = data["regional_whole_rough"]
-        vehicle.price_adjusted_whole_rough = data["adjusted_whole_rough"]
+        vehicle.price_base_private_clean = data["base_private_clean"]
+        vehicle.price_mileage_private_clean = data["mileage_private_clean"]
+        vehicle.price_add_deduct_private_clean = data["add_deduct_private_clean"]
+        vehicle.price_regional_private_clean = data["regional_private_clean"]
+        vehicle.price_adjusted_private_clean = data["adjusted_private_clean"]
+        vehicle.price_base_private_avg = data["base_private_avg"]
+        vehicle.price_mileage_private_avg = data["mileage_private_avg"]
+        vehicle.price_add_deduct_private_avg = data["add_deduct_private_avg"]
+        vehicle.price_regional_private_avg = data["regional_private_avg"]
+        vehicle.price_adjusted_private_avg = data["adjusted_private_avg"]
+        vehicle.price_base_private_rough = data["base_private_rough"]
+        vehicle.price_mileage_private_rough = data["mileage_private_rough"]
+        vehicle.price_add_deduct_private_rough = data["add_deduct_private_rough"]
+        vehicle.price_regional_private_rough = data["regional_private_rough"]
+        vehicle.price_adjusted_private_rough = data["adjusted_private_rough"]
 
         vehicle.price_base_retail_xclean = data["base_retail_xclean"]
         vehicle.price_mileage_retail_xclean = data["mileage_retail_xclean"]
@@ -160,11 +145,6 @@ module BlackbookApi
         vehicle.price_regional_retail_rough = data["regional_retail_rough"]
         vehicle.price_adjusted_retail_rough = data["adjusted_retail_rough"]
 
-        vehicle.price_base_tradein_xclean = data["base_tradein_xclean"]
-        vehicle.price_mileage_tradein_xclean = data["mileage_tradein_xclean"]
-        vehicle.price_add_deduct_tradein_xclean = data["add_deduct_tradein_xclean"]
-        vehicle.price_regional_tradein_xclean = data["regional_tradein_xclean"]
-        vehicle.price_adjusted_tradein_xclean = data["adjusted_tradein_xclean"]
         vehicle.price_base_tradein_clean = data["base_tradein_clean"]
         vehicle.price_mileage_tradein_clean = data["mileage_tradein_clean"]
         vehicle.price_add_deduct_tradein_clean = data["add_deduct_tradein_clean"]

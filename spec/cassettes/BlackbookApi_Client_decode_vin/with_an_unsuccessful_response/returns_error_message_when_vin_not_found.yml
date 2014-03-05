@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://john%40example.com:example@service.blackbookcloud.com/UsedCarWS/UsedCarWS/UsedVehicle/VIN/invalid_vin?fmt=json
+    uri: https://john%40blinker.com:blinker@service.blackbookcloud.com/UsedCarWS/UsedCarWS/UsedVehicle/VIN/invalid_i?fmt=json
     body:
       encoding: US-ASCII
       string: ''
@@ -29,11 +29,11 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Sat, 15 Feb 2014 01:29:48 GMT
+      - Wed, 05 Mar 2014 04:54:11 GMT
     body:
       encoding: UTF-8
       string: '{"warning_count":0,"error_count":1,"message_list":[{"description":"Vehicle
         Not Found","code":9,"type":"Error"}],"token_expiration_minutes":0,"used_vehicles":{"used_vehicle_list":[],"template":0,"version":0,"data_included":false,"data_available":false}}'
     http_version: 
-  recorded_at: Sat, 15 Feb 2014 01:29:51 GMT
+  recorded_at: Wed, 05 Mar 2014 04:54:06 GMT
 recorded_with: VCR 2.8.0

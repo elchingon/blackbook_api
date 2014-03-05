@@ -18,8 +18,18 @@ describe BlackbookApi::Vehicle, ".from_blackbook_hash" do
     it{ expect(vehicle.mpg_highway).to eq(25) }
     it{ expect(vehicle.engine_cylinders).to eq(6) }
     it{ expect(vehicle.engine_fuel_type).to eq("Flex") }
-    it{ expect(vehicle.price_base_retail_xclean).to eq(20075) }
-    it{ expect(vehicle.price_adjusted_retail_clean).to eq(18450) }
+    it{ expect(vehicle.price_base_private_clean).to eq(18425) }
+    it{ expect(vehicle.price_adjusted_private_clean).to eq(18425) }
+    it{ expect(vehicle.price_base_private_avg).to eq(15675) }
+    it{ expect(vehicle.price_adjusted_private_avg).to eq(15675) }
+    it{ expect(vehicle.price_base_private_rough).to eq(13100) }
+    it{ expect(vehicle.price_adjusted_private_rough).to eq(13100) }
+    it{ expect(vehicle.price_base_retail_xclean).to eq(20900) }
+    it{ expect(vehicle.price_adjusted_retail_xclean).to eq(20900) }
+    it{ expect(vehicle.price_base_retail_clean).to eq(19250) }
+    it{ expect(vehicle.price_adjusted_retail_clean).to eq(19250) }
+    it{ expect(vehicle.price_base_tradein_clean).to eq(16545) }
+    it{ expect(vehicle.price_adjusted_tradein_clean).to eq(16545) }
 
     it{ expect(vehicle.region2).to eq(-100) }
     it{ expect(vehicle.msrp).to eq(20995) }
@@ -75,61 +85,56 @@ describe BlackbookApi::Vehicle, ".from_blackbook_hash" do
             "class_name" => "Passenger Van",
             "first_values_flag" => false,
             "risk_score" => "",
-            "base_whole_xclean" => 20000,
-            "mileage_whole_xclean" => 0,
-            "add_deduct_whole_xclean" => 0,
-            "regional_whole_xclean" => 0,
-            "adjusted_whole_xclean" => 20000,
-            "base_whole_clean" => 19000,
-            "mileage_whole_clean" => -1000,
-            "add_deduct_whole_clean" => 0,
-            "regional_whole_clean" => 0,
-            "adjusted_whole_clean" => 18000,
-            "base_whole_avg" => 0,
-            "mileage_whole_avg" => 0,
-            "add_deduct_whole_avg" => 0,
-            "regional_whole_avg" => 0,
-            "adjusted_whole_avg" => 0,
-            "base_whole_rough" => 0,
-            "mileage_whole_rough" => 0,
-            "add_deduct_whole_rough" => 0,
-            "regional_whole_rough" => 0,
-            "adjusted_whole_rough" => 0,
-            "base_retail_xclean" => 20075,
+            "base_private_clean" => 18425,
+            "mileage_private_clean" => 0,
+            "add_deduct_private_clean" => 0,
+            "regional_private_clean" => 0,
+            "adjusted_private_clean" => 18425,
+            "base_private_avg" => 15675,
+            "mileage_private_avg" => 0,
+            "add_deduct_private_avg" => 0,
+            "regional_private_avg" => 0,
+            "adjusted_private_avg" => 15675,
+            "base_private_rough" => 13100,
+            "mileage_private_rough" => 0,
+            "add_deduct_private_rough" => 0,
+            "regional_private_rough" => 0,
+            "adjusted_private_rough" => 13100,
+            "base_retail_xclean" => 20900,
             "mileage_retail_xclean" => 0,
             "add_deduct_retail_xclean" => 0,
             "regional_retail_xclean" => 0,
-            "adjusted_retail_xclean" => 20075,
-            "base_retail_clean" => 18450,
+            "adjusted_retail_xclean" => 20900,
+            "base_retail_clean" => 19250,
             "mileage_retail_clean" => 0,
             "add_deduct_retail_clean" => 0,
             "regional_retail_clean" => 0,
-            "adjusted_retail_clean" => 18450,
-            "base_retail_avg" => 15675,
+            "adjusted_retail_clean" => 19250,
+            "base_retail_avg" => 16475,
             "mileage_retail_avg" => 0,
             "add_deduct_retail_avg" => 0,
             "regional_retail_avg" => 0,
-            "adjusted_retail_avg" => 15675,
-            "base_retail_rough" => 13000,
+            "adjusted_retail_avg" => 16475,
+            "base_retail_rough" => 13800,
             "mileage_retail_rough" => 0,
             "add_deduct_retail_rough" => 0,
             "regional_retail_rough" => 0,
-            "adjusted_retail_rough" => 13000,
-            "base_tradein_clean" => 15795,
+            "adjusted_retail_rough" => 13800,
+            "base_tradein_clean" => 16545,
             "mileage_tradein_clean" => 0,
             "add_deduct_tradein_clean" => 0,
             "regional_tradein_clean" => 0,
-            "adjusted_tradein_clean" => 15795,
-            "base_tradein_avg" => 13675,
+            "adjusted_tradein_clean" => 16545,
+            "base_tradein_avg" => 14425,
             "mileage_tradein_avg" => 0,
             "add_deduct_tradein_avg" => 0,
             "regional_tradein_avg" => 0,
-            "adjusted_tradein_avg" => 13675,
-            "base_tradein_rough" => 10225,
+            "adjusted_tradein_avg" => 14425,
+            "base_tradein_rough" => 10935,
             "mileage_tradein_rough" => 0,
             "add_deduct_tradein_rough" => 0,
             "regional_tradein_rough" => 0,
-            "adjusted_tradein_rough" => 10225,
+            "adjusted_tradein_rough" => 10935,
             "base_finadv" => 0,
             "mileage_finadv" => 0,
             "add_deduct_finadv" => 0,
