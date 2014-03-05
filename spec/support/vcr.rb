@@ -10,7 +10,9 @@ end
 RSpec.configure do |c|
   # In rspec 3 this will no longer be nessecary
   c.treat_symbols_as_metadata_keys_with_true_values = true
-  c.around do
-    Dir[File.dirname(__FILE__) + "/support/blackbook_api_helper.rb"].each{|support_file| require support_file }
+  c.around do |example|
+    cached_name = BlackbookApi.username
+    example.run
+    BlackbookApi.username = cached_name
   end
 end
