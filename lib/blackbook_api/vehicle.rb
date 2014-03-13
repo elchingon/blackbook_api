@@ -23,6 +23,30 @@ module BlackbookApi
     attribute :transmission, String # A = automatic, M = manual, can be null
     attribute :drivetrain, String
     attribute :num_gears, Integer
+    attribute :wheel_base, Integer
+    attribute :tire_size, String
+    attribute :weight, Integer # gvw
+    attribute :payload_cap, Integer
+    attribute :tow_cap, Integer
+    attribute :seat_cap, Integer
+    attribute :seats, String
+    attribute :fuel_cap, Float
+    attribute :fuel_delivery, String
+    attribute :aux_fuel_cap, Float
+    attribute :base_hp, String
+    attribute :taxable_hp, Integer
+    attribute :torque, String
+    attribute :ext_doors, String
+    attribute :moon_sunroof, String
+    attribute :entertain, String
+    attribute :navigation, String
+    attribute :airbags, String
+    attribute :anti_corrosion_warranty, String
+    attribute :basic_warranty, String
+    attribute :powertrain_warranty, String
+    attribute :bumper_to_bumper_warranty, String
+    attribute :hybrid_warranty, String
+    attribute :road_assist_warranty, String
     attribute :price_base_private_clean, BigDecimal
     attribute :price_mileage_private_clean, Float
     attribute :price_add_deduct_private_clean, Float
@@ -108,6 +132,30 @@ module BlackbookApi
         vehicle.transmission = data["transmission"]
         vehicle.drivetrain = data["drivetrain"]
         vehicle.num_gears = data["num_gears"]
+        vehicle.wheel_base = data["wheel_base"]
+        vehicle.tire_size = data["tire_size"]
+        vehicle.weight = data["gvw"]
+        vehicle.payload_cap = data["payload_cap"].gsub(",","")
+        vehicle.tow_cap = data["tow_cap"].gsub(",","")
+        vehicle.seat_cap = data["seat_cap"]
+        vehicle.seats = data["seats"]
+        vehicle.fuel_cap = data["fuel_cap"]
+        vehicle.fuel_delivery = data["fuel_delivery"]
+        vehicle.aux_fuel_cap = data["aux_fuel_cap"]
+        vehicle.base_hp = data["base_hp"]
+        vehicle.taxable_hp = data["taxable_hp"]
+        vehicle.torque = data["torque"]
+        vehicle.ext_doors = data["ext_doors"]
+        vehicle.moon_sunroof = data["moon_sunroof"]
+        vehicle.entertain = data["entertain"]
+        vehicle.navigation = data["navigation"]
+        vehicle.airbags = data["airbags"]
+        vehicle.anti_corrosion_warranty = data["anti_corrosion_warranty"]
+        vehicle.basic_warranty = data["basic_warranty"]
+        vehicle.powertrain_warranty = data["powertrain_warranty"]
+        vehicle.bumper_to_bumper_warranty = data["bumper_to_bumper_warranty"]
+        vehicle.hybrid_warranty = data["hybrid_warranty"]
+        vehicle.road_assist_warranty = data["road_assist_warranty"]
         vehicle.price_base_private_clean = data["base_private_clean"]
         vehicle.price_mileage_private_clean = data["mileage_private_clean"]
         vehicle.price_add_deduct_private_clean = data["add_deduct_private_clean"]
