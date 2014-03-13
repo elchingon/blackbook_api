@@ -18,6 +18,8 @@ describe BlackbookApi::Vehicle, ".from_blackbook_hash" do
     it{ expect(vehicle.mpg_highway).to eq(25) }
     it{ expect(vehicle.engine_cylinders).to eq(6) }
     it{ expect(vehicle.engine_fuel_type).to eq("Flex") }
+    it{ expect(vehicle.fuel_cap).to eq(20.0) }
+    it{ expect(vehicle.weight).to eq(6050) }
     it{ expect(vehicle.price_base_private_clean).to eq(18425) }
     it{ expect(vehicle.price_adjusted_private_clean).to eq(18425) }
     it{ expect(vehicle.price_base_private_avg).to eq(15675) }

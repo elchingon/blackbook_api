@@ -1,6 +1,7 @@
 # BlackbookApi
 
-TODO: Write a gem description
+Gem to connect to Blackbook Vehicle API service. Parses the data returned from API and stores in gem specific objects.
+Docs are here: https://developer.blackbookcloud.com/Documentation
 
 ## Installation
 
