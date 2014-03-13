@@ -135,8 +135,8 @@ module BlackbookApi
         vehicle.wheel_base = data["wheel_base"]
         vehicle.tire_size = data["tire_size"]
         vehicle.weight = data["gvw"]
-        vehicle.payload_cap = data["payload_cap"]
-        vehicle.tow_cap = data["tow_cap"]
+        vehicle.payload_cap = data["payload_cap"].gsub(",","")
+        vehicle.tow_cap = data["tow_cap"].gsub(",","")
         vehicle.seat_cap = data["seat_cap"]
         vehicle.seats = data["seats"]
         vehicle.fuel_cap = data["fuel_cap"]
