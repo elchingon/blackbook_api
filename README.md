@@ -35,3 +35,5 @@ Set ENV variables for Blackbook username and password so specs will run
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+[ ![Codeship Status for elchingon/blackbook_api](https://www.codeship.io/projects/ebd5b240-efec-0131-0c85-62ba7cdbe292/status)](https://www.codeship.io/projects/27173)
